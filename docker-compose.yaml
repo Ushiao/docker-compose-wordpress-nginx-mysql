@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nginx:
     image: nginx:latest
@@ -34,11 +32,11 @@ services:
     container_name: wordpress_tagword
     environment:
       WORDPRESS_DB_HOST: db_tagword:3306
-      WORDPRESS_DB_NAME: ${TAGWORD_DB_NAME}
-      WORDPRESS_DB_USER: ${TAGWORD_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${TAGWORD_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - wordpress_tagword_data:/var/www/html
+      - ./data/wordpress:/var/www/html
     networks:
       wordpress_network:
         aliases:
@@ -48,12 +46,12 @@ services:
     image: mysql:5.7
     container_name: db_tagword
     environment:
-      MYSQL_ROOT_PASSWORD: ${TAGWORD_DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${TAGWORD_DB_NAME}
-      MYSQL_USER: ${TAGWORD_DB_USER}
-      MYSQL_PASSWORD: ${TAGWORD_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - db_tagword_data:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
     networks:
       wordpress_network:
         aliases:
@@ -61,10 +59,6 @@ services:
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
-
-volumes:
-  wordpress_tagword_data:
-  db_tagword_data:
 
 networks:
   wordpress_network:

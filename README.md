@@ -45,16 +45,16 @@ TAGWORD_DB_PASSWORD=yourpassword
 TAGWORD_DB_ROOT_PASSWORD=rootpassword
 
 # Domain and SSL Configuration
-DOMAIN_NAME=tagword.tech
-SSL_EMAIL=your-email@example.com
+DOMAIN_NAME=example.com
+EMAIL=your-email@example.com
 ```
 
 - **TAGWORD_DB_NAME**: Name of the WordPress database.
 - **TAGWORD_DB_USER**: Username for accessing the database.
 - **TAGWORD_DB_PASSWORD**: Password for the WordPress database.
 - **TAGWORD_DB_ROOT_PASSWORD**: Root password for the MySQL database.
-- **DOMAIN_NAME**: Your website's domain name (e.g., `tagword.tech`).
-- **SSL_EMAIL**: Your email address for SSL certificate registration.
+- **DOMAIN_NAME**: Your website's domain name (e.g., `sample.com`).
+- **EMAIL**: Your email address for SSL certificate registration.
 
 #### One-click Deployment (Optional)
 

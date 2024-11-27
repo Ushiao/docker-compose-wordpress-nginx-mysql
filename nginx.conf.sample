@@ -1,3 +1,6 @@
+# nginx.conf - 初始化配置模板
+# 请勿修改此文件中的占位符
+
 events {
     worker_connections 1024;
 }
@@ -25,25 +28,28 @@ http {
         }
         
         location / {
-           return 301 https://$host$request_uri;
+            return 301 https://$host$request_uri;
         }
     }
 
-    # HTTPS 服务器配置
+    # HTTPS 配置（默认注释）
+    # 在证书获取后会启用
     server {
-        listen 443 ssl http2;
+        #listen 443 ssl http2;
         server_name ${DOMAIN_NAME} www.${DOMAIN_NAME};
-        
-        ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;
-        
+
+        #ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
+        #ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;
+
+        # SSL 增强配置
         ssl_protocols TLSv1.2 TLSv1.3;
         ssl_ciphers HIGH:!aNULL:!MD5;
-        
+
+        # 添加安全相关响应头
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
         add_header X-Frame-Options SAMEORIGIN;
         add_header X-Content-Type-Options nosniff;
-
+    
         location / {
             proxy_pass http://wordpress_tagword:80;
             proxy_set_header Host $host;
