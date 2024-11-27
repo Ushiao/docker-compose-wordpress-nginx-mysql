@@ -27,8 +27,8 @@ This project sets up a WordPress environment with Nginx and automatic SSL certif
 First, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/docker-wordpress-nginx-certbot.git
-cd docker-wordpress-nginx-certbot
+git clone https://github.com/Ushiao/docker-compose-wordpress-nginx-mysql.git
+cd docker-compose-wordpress-nginx-mysql
 ```
 
 ### 2. Configure the Environment
