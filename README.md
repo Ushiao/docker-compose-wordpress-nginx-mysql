@@ -1,7 +1,3 @@
-好的，以下是基于您提供的内容，重构后的 GitHub 项目说明（`README.md`），适用于您的项目：
-
----
-
 # Docker WordPress with Nginx and Certbot
 
 This project sets up a WordPress environment with Nginx and automatic SSL certificate management via Certbot using Docker. It is designed to make it easy to deploy a secure, production-ready WordPress site with SSL encryption.
